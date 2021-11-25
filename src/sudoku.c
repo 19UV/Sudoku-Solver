@@ -200,6 +200,10 @@ int Board_load_from_file(struct Board* board, const char* path) {
 	
 	// One-line ordering *technically* undefined behavior, so not doing it
 	const char* file_data = read_file(path);
+	if(file_data == NULL) {
+		return 1;
+	}
+	
 	const char* file_read = (char*)file_data;
 	
 	// Each 'line' is a pointer to the start of the first 9 lines in the file

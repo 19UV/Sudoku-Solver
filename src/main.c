@@ -38,13 +38,18 @@ struct Config parse_config(int argc, char* argv[]) {
 }
 
 int main(int argc, char* argv[]) {
+	int res;
+	
 	struct Config config = parse_config(argc, argv);
 	fprintf(stderr, "Board Path: %s\n", config.file_path);
 	
 	struct Board board;
-	Board_load_from_file(&board, config.file_path);
+	if((res = Board_load_from_file(&board, config.file_path)) != 0) {
+		printf("Failed to read file!\n");
+		return res;
+	}
 	
-	int res = Board_solve(&board);
+	res = Board_solve(&board);
 	if(res != 0) {
 		printf("Board Not Solvable!\n");
 		return res;
