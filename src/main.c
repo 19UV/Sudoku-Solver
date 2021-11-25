@@ -28,6 +28,9 @@ struct Config parse_config(int argc, char* argv[]) {
 			}
 			strcpy_s(config.file_path, MAX_PATH_SIZE, argv[i+1]);
 			i++; // Skip Next
+		} else if(STR_EQ(curr, "--help") || STR_EQ(curr, "-help")) {
+			fprintf(stderr, "SudokuSolver [--path <path-to-board>]\n");
+			*(config.file_path) = 0; // Hacky exit
 		} else {
 			printf("Unknown Command: %s\n", curr);
 			break;
@@ -41,6 +44,10 @@ int main(int argc, char* argv[]) {
 	int res;
 	
 	struct Config config = parse_config(argc, argv);
+	if(*(config.file_path) == 0) {
+		// Used help menu, so not attempting the board
+		return 0;
+	}
 	fprintf(stderr, "Board Path: %s\n", config.file_path);
 	
 	struct Board board;
