@@ -1,0 +1,9 @@
+1********| Puzzle from my own tests
+*2*******| This has multible solutions
+**3******| As in alot
+***4*****| But it should return a valid solution
+****5****|
+*****6***|
+******7**|
+*******8*|
+********9|
