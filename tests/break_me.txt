@@ -1,3 +1,9 @@
-***
-**
-*
+********| This is a test added after a patch
+********| to prevent a segmentation fault if
+********| given an entirely empty board
+********|
+********| The reason was due to an uninitialized
+********| integer due to an initial entropy
+********| of 9 (now set to 10)
+********|
+********|
