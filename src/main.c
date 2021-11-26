@@ -56,6 +56,11 @@ int main(int argc, char* argv[]) {
 		return res;
 	}
 
+	if(!Board_valid(&board)) {
+		printf("Board Invalid!\n");
+		return 1;
+	}
+
 	res = Board_solve(&board);
 	if(res != 0) {
 		printf("Board Not Solvable!\n");

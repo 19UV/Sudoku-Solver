@@ -31,5 +31,6 @@ int				Cell_initialize(struct Cell* cell);
 int				Board_initialize(struct Board* board);
 void			Board_print(struct Board* board);
 int				Board_solve(struct Board* board);
+bool			Board_valid(struct Board* board);
 void			Board_set_cell(struct Board* board, uint x, uint y, uint value);
 int				Board_load_from_file(struct Board* board, const char* path);

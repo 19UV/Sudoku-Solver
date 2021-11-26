@@ -150,6 +150,49 @@ int Board_solve(struct Board* board) {
 	return 1; // Impossible Board
 }
 
+bool Board_valid(struct Board* board) {
+	uint buf_a[10], buf_b[10];
+
+	for(uint a = 0; a < 9; a++) {
+		memset(buf_a, 0, 10 * sizeof(uint));
+		memset(buf_b, 0, 10 * sizeof(uint));
+
+		for(uint b = 0; b < 9; b++) {
+			buf_a[board->cell[a][b].value]++;
+			buf_b[board->cell[b][a].value]++;
+		}
+
+		for(uint b = 1; b <= 9; b++) {
+			if(buf_a[b] > 1) {
+				return false;
+			}
+			if(buf_b[b] > 1) {
+				return false;
+			}
+		}
+	}
+
+	for(uint a = 0; a < 9; a += 3) {
+		for(uint b = 0; b < 9; b += 3) {
+			memset(buf_a, 0, 10 * sizeof(uint));
+
+			for(uint c = 0; c < 3; c++) {
+				for(uint d = 0; d < 3; d++) {
+					buf_a[board->cell[a+c][b+d].value]++;
+				}
+			}
+
+			for(uint c = 1; c < 10; c++) {
+				if(buf_a[c] > 1) {
+					return false;
+				}
+			}
+		}
+	}
+
+	return true;
+}
+
 void Board_set_cell(struct Board* board, uint x, uint y, uint value) {
 	struct Cell* target = &(board->cell[y][x]);
 	target->value = value;
