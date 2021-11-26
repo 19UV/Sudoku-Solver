@@ -26,7 +26,7 @@ struct Config parse_config(int argc, char* argv[]) {
 				printf("Not Enough Inputs!\n");
 				break;
 			}
-			strcpy_s(config.file_path, MAX_PATH_SIZE, argv[i+1]);
+			STR_COPY(config.file_path, argv[i+1], MAX_PATH_SIZE);
 			i++; // Skip Next
 		} else if(STR_EQ(curr, "--help") || STR_EQ(curr, "-help")) {
 			fprintf(stderr, "SudokuSolver [--path <path-to-board>]\n");

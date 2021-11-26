@@ -2,7 +2,7 @@
 
 // Check if end-of-something character (line or file)
 // used in Board_load_from_file()
-inline bool ending_character(char c) {
+static inline bool ending_character(char c) {
 	return (c == 0) || (c == '\n') || (c == '\r');
 }
 
