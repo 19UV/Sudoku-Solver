@@ -3,7 +3,9 @@ This is a fun little project I threw together in an afternoon to avoid
 having to do homework.
 
 ## Usage
+```bash
 SudokuSolver --path <path-to-board.txt>
+```
 
 ## Board Format
 ```
