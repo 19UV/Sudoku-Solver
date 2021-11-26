@@ -6,4 +6,4 @@
 *****1***|
 ******1**|
 *******1*|
-********1|
+********1| Should print "Board Invalid!" and exit code 1

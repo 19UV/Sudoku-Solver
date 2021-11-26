@@ -6,4 +6,4 @@
 ********| integer due to an initial entropy
 ********| of 9 (now set to 10)
 ********|
-********|
+********| Should provide a valid output & exit code 0
