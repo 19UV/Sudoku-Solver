@@ -52,11 +52,7 @@ int main(int argc, char* argv[]) {
 	
 	struct Board board;
 	if((res = Board_load_from_file(&board, config.file_path)) != 0) {
-		if(res == 1) {
-			printf("Failed to read file!\n");
-		} else if(res == 2) {
-			printf("Invalid Board!\n");
-		}
+		printf("Failed to read file!\n");
 		return res;
 	}
 
