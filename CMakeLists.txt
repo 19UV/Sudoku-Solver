@@ -6,3 +6,5 @@ add_executable(SudokuSolver
 	src/sudoku.c
 	src/main.c
 )
+
+set_property(TARGET SudokuSolver PROPERTY C_STANDARD 11)
