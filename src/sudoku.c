@@ -98,7 +98,7 @@ int Board_solve(struct Board* board) {
 	*/
 	
 	// X, Y, and entropy of the cell with the lowest entropy
-	uint low_x, low_y, low_ent = 9;
+	uint low_x, low_y, low_ent = 10;
 	for(uint y = 0; y < 9; y++) {
 		for(uint x = 0; x < 9; x++) {
 			struct Cell* cell = &(board->cell[y][x]);
@@ -133,7 +133,7 @@ int Board_solve(struct Board* board) {
 			// Make a copy of the board
 			struct Board child;
 			memcpy(&child, board, sizeof(struct Board));
-			
+
 			// Make the change in the board
 			Board_set_cell(&child, low_x, low_y, i + 1);
 			
@@ -247,7 +247,7 @@ int Board_load_from_file(struct Board* board, const char* path) {
 	// I assume its due to a too large stack? For this reason, I'm
 	// requiring at least one filled in cell
 	if(known_count == 0) {
-		return 2;
+		// return 2;
 	}
 	return res;
 }
