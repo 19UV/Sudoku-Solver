@@ -220,6 +220,7 @@ int Board_load_from_file(struct Board* board, const char* path) {
 			file_read++;
 	}
 	
+	uint known_count = 0;
 	for(uint line = 0; line < 9; line++) {
 		for(uint x = 0; x < 9; x++) {
 			char c = *(lines[line] + x);
@@ -235,11 +236,18 @@ int Board_load_from_file(struct Board* board, const char* path) {
 			// should work for all UTF-8 and/or ASCII similar systems
 			// AKA: All sane systems
 			if((c >= '1') && (c <= '9')) {
+				known_count++;
 				Board_set_cell(board, x, line, c - '0');
 			}
 		}
 	}
-	
 	free((void*)file_data); // Cast to void* because MSVC is annoying
+
+	// An entirely blank board seems to cause a segmentation faul
+	// I assume its due to a too large stack? For this reason, I'm
+	// requiring at least one filled in cell
+	if(known_count == 0) {
+		return 2;
+	}
 	return res;
 }

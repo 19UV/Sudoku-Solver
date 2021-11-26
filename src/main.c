@@ -52,17 +52,21 @@ int main(int argc, char* argv[]) {
 	
 	struct Board board;
 	if((res = Board_load_from_file(&board, config.file_path)) != 0) {
-		printf("Failed to read file!\n");
+		if(res == 1) {
+			printf("Failed to read file!\n");
+		} else if(res == 2) {
+			printf("Invalid Board!\n");
+		}
 		return res;
 	}
-	
+
 	res = Board_solve(&board);
 	if(res != 0) {
 		printf("Board Not Solvable!\n");
 		return res;
 	}
-	
+
 	Board_print(&board);
-	
+
 	return 0;
 }
